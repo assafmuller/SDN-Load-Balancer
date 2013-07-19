@@ -12,25 +12,19 @@ fi
 ip add flush $1
 ifconfig $1 down
 
-for (( i=0; i<$2; i++ ))
-do
-    ifconfig tap$i down
-done
+ovs-vsctl del-br lb
+ovs-vsctl del-br wan
 
-ovs-vsctl del-port ovs-switch $1
-for (( i=0; i<$2; i++ ))
-do
-    ovs-vsctl del-port ovs-switch tap$i
-done
-
-ovs-vsctl del-br ovs-switch
 service NetworkManager start
 sleep 3
+
 ifconfig $1 up
 
-for (( i=0; i<$2; i++ ))
+for (( i=1; i<=$2; i++ ))
 do
+    let "tap2=$i+100"
     tunctl -d tap$i
+    tunctl -d tap$tap2
 done
 
 service openvswitch stop
