@@ -23,6 +23,7 @@ ifconfig $1 down
 sleep 1
 ovs-vsctl add-br wan
 ovs-vsctl add-br lb
+ovs-vsctl set-controller lb tcp:127.0.0.1:6633
 for (( i=1; i<=$2; i++ ))
 do
     let "tap2=$i+100"

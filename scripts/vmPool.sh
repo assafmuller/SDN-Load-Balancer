@@ -8,7 +8,7 @@ fi
 
 for (( i=1; i<=$1; i++ ))
 do
-    if [ ! -e ./VM$i ]
+    if [ ! -e ../images/VM$i ]
       then
         ./cloneDisk.sh $i
     fi 
