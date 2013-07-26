@@ -23,7 +23,8 @@ ifconfig $1 down
 sleep 1
 ovs-vsctl add-br wan
 ovs-vsctl add-br lb
-ovs-vsctl set-controller lb tcp:127.0.0.1:6633
+#ovs-vsctl set-controller lb tcp:127.0.0.1:6633
+./addFlows.sh
 for (( i=1; i<=$2; i++ ))
 do
     let "tap2=$i+100"
@@ -41,3 +42,6 @@ ifconfig $1 promisc up
 dhclient -r wan
 sleep 1
 dhclient wan
+sleep 3
+./vmTrafficUp.sh
+#./controllerUp.sh $2
