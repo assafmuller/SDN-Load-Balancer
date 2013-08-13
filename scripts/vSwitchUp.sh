@@ -21,17 +21,17 @@ sleep 3
 ip add flush $1
 ifconfig $1 down
 sleep 1
-ovs-vsctl add-br wan
-ovs-vsctl add-br lb
-#ovs-vsctl set-controller lb tcp:127.0.0.1:6633
+ovs-vsctl add-br traffic
+ovs-vsctl add-br lan
+#ovs-vsctl set-controller lan tcp:127.0.0.1:6633
 ./addFlows.sh
 for (( i=1; i<=$2; i++ ))
 do
     let "tap2=$i+100"
-    ovs-vsctl add-port wan tap$i
-    ovs-vsctl add-port lb tap$tap2
+    ovs-vsctl add-port traffic tap$i
+    ovs-vsctl add-port lan tap$tap2
 done
-ovs-vsctl add-port wan $1
+ovs-vsctl add-port traffic $1
 for (( i=1; i<=$2; i++ ))
 do
     let "tap2=$i+100"
@@ -39,9 +39,5 @@ do
     ifconfig tap$tap2 promisc up
 done
 ifconfig $1 promisc up
-dhclient -r wan
-sleep 1
-dhclient wan
-sleep 3
-./vmTrafficUp.sh
+
 #./controllerUp.sh $2

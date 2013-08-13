@@ -27,6 +27,4 @@ do
     tunctl -d tap$tap2
 done
 
-./vmTrafficDown.sh
-
 service openvswitch stop
