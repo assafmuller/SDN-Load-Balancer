@@ -12,8 +12,8 @@ fi
 ip add flush $1
 ifconfig $1 down
 
-ovs-vsctl del-br lb
-ovs-vsctl del-br wan
+ovs-vsctl del-br lan
+ovs-vsctl del-br traffic
 
 service NetworkManager start
 sleep 3
