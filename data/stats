@@ -1,0 +1,17 @@
+rewrite 120 sec 50%
+rate 2119494 failed, avg 17658.0/s
+rewrite 600 sec 50%
+18826.7/s
+1000 burst 20%
+latency min 41 ms, max 1084 ms, avg 71 ms
+10,000
+min 39 ms, max 1111 ms, avg 70 ms
+
+no rewrite 120 sec 50%
+ 19104.1/s 
+600 sec 50%
+ 19920.6/s
+1000 burst 20%
+min 40 ms, max 1070 ms, avg 65 ms
+10,000
+min 40 ms, max 1093 ms, avg 67 ms
