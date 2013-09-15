@@ -19,27 +19,36 @@ Usage - Getting the lab up:
 * Ensure that startupScript.sh is executed on the VM template boot up
 * Construct a topology so that two Fedora hosts are connected via an Ethernet cable
 * On the VMs host (Henceforth known as the host) execute:
+<pre>
     vSwitchUp.sh <em1> <2>
     vmPool.sh <2>
-* On the other machine (Known as the traffic generator) execute trafficUp.sh
+</pre>
+* On the other machine (Known as the traffic generator) execute:
+<pre>
+    trafficUp.sh
+</pre>
 
 At this point you should be able to ping 1.1.1.1 from the traffic generator machine. The first VM
 will answer you. If you fake the traffic from 1.1.1.101 (Instead of 1.1.1.100) you will get an answer
 from the second VM.
 
 * The installed flows can be viewed on the host via:
+<pre>
     ovs-ofctl dump-flows
+</pre>
 
 Usage - Reproducing the results:
 --------------------------------
 * On the traffic generator machine, run:
+<pre>
     ovs-benchmark rate -r 1.1.1.1 -s 1023
     ovs-benchmark latency -r 1.1.1.1 -b 10000
-  For a duration of 10 minutes
+</pre>
+  For a duration of 10 minutes.
 
 Authors:
 --------
-Assaf Muller: assafmuller@gmail.com
+Assaf Muller: assafmuller@gmail.com  
 Noam Slomianko: drekmastermind@gmail.com
 
 License:
