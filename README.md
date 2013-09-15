@@ -6,8 +6,8 @@ Purpose:
 Demonstrate the performance hit of L2 and L3 header rewrites in a typical
 software defined networking load balancer.
 
-Usage - Getting the lab up:
----------------------------
+Getting the lab up:
+-------------------
 * git clone into $HEAD
 * mkdir $HEAD/images
 * Resulting directory tree:
@@ -39,15 +39,15 @@ from the second VM.
     ovs-ofctl dump-flows
 </pre>
 
-Usage - Reproducing the results:
---------------------------------
+Reproducing the results:
+------------------------
 * On the traffic generator machine, run:
 <pre>
     ovs-benchmark rate -r 1.1.1.1 -s 1021 -T 600
     ovs-benchmark latency -r 1.1.1.1 -s 1021 -b 10000
 </pre>
   For a duration of 10 minutes.
-* To get the results with header rewrites, you'll need to execute on the host:
+* To get the results with header rewrites, you'll need to close the VMs and execute on the host:
 <pre>
     addFlowsRewrite.sh
     vmPoolRewrite.sh
