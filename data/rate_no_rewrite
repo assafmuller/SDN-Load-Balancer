@@ -1,0 +1,2 @@
+/usr/bin/ovs-benchmark rate -r 1.1.1.1 -s 1000 -T 600
+22464.5/s
