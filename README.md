@@ -45,6 +45,13 @@ Usage - Reproducing the results:
     ovs-benchmark latency -r 1.1.1.1 -b 10000
 </pre>
   For a duration of 10 minutes.
+* To get the results with header rewrites, you'll need to execute on the host:
+<pre>
+    addFlowsRewrite.sh
+    vmPoolRewrite.sh
+</pre>
+* Edit both of the new VMs (VM1_Rewrite, VM2_Rewrite) and reconfigure their IPs and MACs to 1.1.1.11, 02:00:00:00:00:01 and 1.1.1.12, 02:00:00:00:00:02 respectively
+* Re-run ovs-benchmark on the generator
 
 Authors:
 --------
