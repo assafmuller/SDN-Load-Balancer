@@ -11,10 +11,12 @@ Usage - Getting the lab up:
 * git clone into $HEAD
 * mkdir $HEAD/images
 * Resulting directory tree:
+<pre>
   $HEAD/
     images/
     scripts/
-* Obtain any Linux distribution (Tested on Fedora)
+</pre>
+* Obtain any Red Hat based Linux distribution (Tested on Fedora)
 * Create an image out of it called VM_Template.qcow2 and place it in the images folder
 * Ensure that startupScript.sh is executed on the VM template boot up
 * Construct a topology so that two Fedora hosts are connected via an Ethernet cable
@@ -41,8 +43,8 @@ Usage - Reproducing the results:
 --------------------------------
 * On the traffic generator machine, run:
 <pre>
-    ovs-benchmark rate -r 1.1.1.1 -s 1023
-    ovs-benchmark latency -r 1.1.1.1 -b 10000
+    ovs-benchmark rate -r 1.1.1.1 -s 1021 -T 600
+    ovs-benchmark latency -r 1.1.1.1 -s 1021 -b 10000
 </pre>
   For a duration of 10 minutes.
 * To get the results with header rewrites, you'll need to execute on the host:
