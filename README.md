@@ -55,11 +55,6 @@ Reproducing the results:
 * Edit both of the new VMs (VM1_Rewrite, VM2_Rewrite) and reconfigure their IPs and MACs to 1.1.1.11, 02:00:00:00:00:01 and 1.1.1.12, 02:00:00:00:00:02 respectively
 * Re-run ovs-benchmark on the generator
 
-Authors:
---------
-Assaf Muller: assafmuller@gmail.com  
-Noam Slomianko: drekmastermind@gmail.com
-
 License:
 --------
 SDN-Load-Balancer
